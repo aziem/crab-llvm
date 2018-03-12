@@ -356,8 +356,8 @@ namespace crab_llvm {
 			 cfg_ptr->get_node(&B), F.getContext(), cg, change);
               break;
             }
-            case GenericAbsDomWrapper::opt_oct_apron: {
-              INSTR_LOAD(opt_oct_apron_domain_t, pre,
+            case GenericAbsDomWrapper::oct_apron: {
+              INSTR_LOAD(oct_apron_domain_t, pre,
 			 cfg_ptr->get_node(&B), F.getContext(), cg, change);
               break;
             }

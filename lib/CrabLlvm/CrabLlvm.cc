@@ -116,7 +116,7 @@ CrabLlvmDomain("crab-dom",
 		   "Disjunctive intervals based on ldds"),
        clEnumValN (ZONES_SPLIT_DBM, "zones",
 		   "Zones domain with Sparse DBMs in Split Normal Form"),
-       clEnumValN (OPT_OCT_APRON, "oct",
+       clEnumValN (OCT_APRON, "oct",
 		   "Optimized octagons domain using Elina"),
        clEnumValN (PK_APRON, "pk",
 		   "Polyhedra domain using Apron library"),
@@ -157,7 +157,7 @@ CrabSummDomain("crab-inter-sum-dom",
     cl::values 
     (clEnumValN (ZONES_SPLIT_DBM, "zones",
 		 "Zones domain with sparse DBMs in Split Normal Form"),
-     clEnumValN (OPT_OCT_APRON, "oct",
+     clEnumValN (OCT_APRON, "oct",
 		 "Optimized octagons using Elina"),
      clEnumValN (TERMS_ZONES, "rtz",
 		 "Reduced product of term-dis-int and zones."),
@@ -249,7 +249,7 @@ namespace crab_llvm {
   /** End global counters **/
   
   static bool isRelationalDomain(CrabDomain dom) {
-    return (dom == ZONES_SPLIT_DBM || dom == OPT_OCT_APRON ||
+    return (dom == ZONES_SPLIT_DBM || dom == OCT_APRON ||
 	    dom == PK_APRON        || dom == TERMS_ZONES);
   }
 
@@ -677,8 +677,8 @@ namespace crab_llvm {
       case BOXES:
 	analyzeCfg<boxes_domain_t>(params, assumptions, live, results);
         break;
-      case OPT_OCT_APRON:
-	analyzeCfg<opt_oct_apron_domain_t>(params, assumptions, live, results);
+      case OCT_APRON:
+	analyzeCfg<oct_apron_domain_t>(params, assumptions, live, results);
         break;
       case PK_APRON:
 	analyzeCfg<pk_apron_domain_t>(params, assumptions, live, results);
@@ -908,8 +908,8 @@ namespace crab_llvm {
   #else
   #define INTER_ANALYZE(DOM,CG,M,LIVE,PRE,POST,VFAC,CHECKS)		       \
   switch (CrabSummDomain){                                                     \
-    case OPT_OCT_APRON:                                                        \
-      analyze_cg<opt_oct_apron_domain_t,DOM>(CG, M, LIVE, PRE, POST, VFAC, CHECKS); \
+    case OCT_APRON:                                                        \
+      analyze_cg<oct_apron_domain_t,DOM>(CG, M, LIVE, PRE, POST, VFAC, CHECKS); \
       break;                                                                   \
     case TERMS_ZONES:                                                          \
       analyze_cg<num_domain_t,DOM>(CG, M, LIVE, PRE, POST, VFAC, CHECKS);      \
@@ -1047,8 +1047,8 @@ namespace crab_llvm {
           INTER_ANALYZE(split_dbm_domain_t, *cg, M, live_map,
 			m_pre_map, m_post_map, m_vfac, m_checks_db); 
           break;
-        case OPT_OCT_APRON:
-          INTER_ANALYZE(opt_oct_apron_domain_t, *cg, M, live_map,
+        case OCT_APRON:
+          INTER_ANALYZE(oct_apron_domain_t, *cg, M, live_map,
 			m_pre_map, m_post_map, m_vfac, m_checks_db); 
           break;
         case PK_APRON:

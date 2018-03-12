@@ -138,7 +138,7 @@ namespace crab_llvm {
 		   term_intv, term_dis_intv, 
 		   ric, 
 		   boxes, dis_intv,
-		   opt_oct_apron, pk_apron,
+		   oct_apron, pk_apron,
 		   num } id_t;
     
     GenericAbsDomWrapper() { }
@@ -188,7 +188,7 @@ namespace crab_llvm {
    DEFINE_WRAPPER(TermDisIntDomainWrapper,term_dis_int_domain_t,term_dis_intv)
    DEFINE_WRAPPER(BoxesDomainWrapper,boxes_domain_t,boxes)
    DEFINE_WRAPPER(DisIntervalDomainWrapper,dis_interval_domain_t,dis_intv)
-   DEFINE_WRAPPER(OptOctApronDomainWrapper,opt_oct_apron_domain_t,opt_oct_apron)
+   DEFINE_WRAPPER(OptOctApronDomainWrapper,oct_apron_domain_t,oct_apron)
    DEFINE_WRAPPER(PkApronDomainWrapper,pk_apron_domain_t,pk_apron)
    DEFINE_WRAPPER(NumDomainWrapper,num_domain_t,num)
 
